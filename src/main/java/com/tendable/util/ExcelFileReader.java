@@ -1,4 +1,4 @@
-package com.tentable.util;
+package com.tendable.util;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
