@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 public class TopMenuTest extends TestBase {
 	@Test
 	public void topMenuTest() {
-		executor = new Executor(testName, executionSpecifications);
+		executor = new Executor(this.getClass().getSimpleName(), executionSpecifications);
 		try {
 			new NavigationMenu(executor)
 					.verifyPresenceOfAllNavigationMenuLinks()

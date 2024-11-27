@@ -1,8 +1,10 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Tendable">
-    <test name="Exercise">
-        <packages>
-            <package name="com.tendable.tests"/>
-        </packages>
+
+<suite name="TendableSanity">
+    <test name="ContactUsFormErrorMessage">
+        <classes>
+            <class name="com.tendable.tests.ContactUsFormErrorMessageTest"/>
+            <class name="com.tendable.tests.TopMenuTest"/>
+        </classes>
     </test>
 </suite>

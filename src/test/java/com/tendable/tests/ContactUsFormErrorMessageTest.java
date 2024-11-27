@@ -14,7 +14,7 @@ public class ContactUsFormErrorMessageTest extends TestBase {
 	@Test(dataProvider = "getData")
 	public void contactUsFormErrorMessageTest(Map<String, String> testData) {
 		log.info("Test Data: {}", testData);
-		executor = new Executor(testName, executionSpecifications);
+		executor = new Executor(this.getClass().getSimpleName(), executionSpecifications);
 		try {
 			new NavigationMenu(executor)
 					.navigateToContactPage()

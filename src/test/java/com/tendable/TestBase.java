@@ -3,14 +3,12 @@ package com.tendable;
 import com.tendable.util.ExcelFileReader;
 import com.tendable.util.ExtentManager;
 import lombok.extern.slf4j.Slf4j;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.DataProvider;
+import org.testng.annotations.*;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Properties;
@@ -45,14 +43,10 @@ public class TestBase {
 		log.info("Execution Specifications: {}", executionSpecifications);
 	}
 
-	@BeforeTest
-	public void beforeTest() {
-		testName = this.getClass().getSimpleName();
-	}
-
 	@DataProvider
-	public Object[] getData() {
+	public Object[] getData(Method method) {
 		ExcelFileReader excel = new ExcelFileReader(Executor.class.getResource(File.separator + "TestData.xlsx"));
+		testName = method.getDeclaringClass().getSimpleName();
 		int rowCount = excel.getRowCount(testName) - 1;
 		Object[] data = new Object[rowCount];
 		for (int rowIndex = 0; rowIndex < rowCount; rowIndex++) {
@@ -67,8 +61,8 @@ public class TestBase {
 		return data;
 	}
 
-	@BeforeSuite
-	public void beforeSuite() {
+	@BeforeMethod
+	public void beforeMethod() {
 		initialize();
 	}
 
